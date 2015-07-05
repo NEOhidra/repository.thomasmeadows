@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
+<addon id="plugin.video.infowars"
+       name="Infowars"
+       version="2.0.1"
+       provider-name="Thomas Meadows">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.addon.common" version="2.0.0" />
+    </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Videos from Infowars.com Including live daily shows</summary>
+    <description>Videos from Infowars.com Including live daily shows</description>
+    <disclaimer lang="en">This Project was made without association of the creators of infowars.com</disclaimer>
+    <language>en</language>
+    <platform>all</platform>
+    <forum>http://www.xbmc.org</forum>
+    <website>https://github.com/thomasmeadows/repository.thomasmeadows</website>
+    <email></email>
+  </extension>
+</addon>
+
+<addon id="repository.thomasmeadows" name="Thomas Meadows Repository" version="1.0" provider-name="Thomas Meadows">
+  <extension point="xbmc.addon.repository" name="Thomas Meadows Repository">
+    <info compressed="false">https://github.com/thomasmeadows/repository.thomasmeadows/raw/master/addons.xml</info>
+    <checksum>https://github.com/thomasmeadows/repository.thomasmeadows/raw/master/addons.xml.md5</checksum>
+    <datadir zip="true">https://github.com/thomasmeadows/repository.thomasmeadows/raw/master/zips</datadir>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Install addons made by Thomas Meadows</summary>
+    <description>Contains Infowars.com addon.......For OFFICIAL Support email thomasmeadows@gmail.com</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+</addons>
