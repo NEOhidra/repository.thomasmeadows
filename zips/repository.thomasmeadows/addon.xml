@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="repository.prafit" name="Prafit Repository" version="1.0" provider-name="Prafit">
-	<extension point="xbmc.addon.repository" name="Prafit Repository">
-		<info compressed="false">http://github.com/prafit/prafit/raw/master/addons.xml</info>
-		<checksum>http://github.com/prafit/prafit/raw/master/addons.xml.md5</checksum>
-		<datadir zip="true">http://github.com/prafit/prafit/raw/master/zips</datadir>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary>Install addons made by prafit</summary>
-		<description>Install addons made by prafit(Infowars).......For OFFICIAL !! Support Visit XBMCHUB.COM</description>
-		<platform>all</platform>
-	</extension>
+<addon id="repository.thomasmeadows" name="Thomas Meadows Repository" version="1.0" provider-name="Thomas Meadows">
+  <extension point="xbmc.addon.repository" name="Thomas Meadows Repository">
+    <info compressed="false">https://github.com/thomasmeadows/repository.thomasmeadows/raw/master/addons.xml</info>
+    <checksum>https://github.com/thomasmeadows/repository.thomasmeadows/raw/master/addons.xml.md5</checksum>
+    <datadir zip="true">https://github.com/thomasmeadows/repository.thomasmeadows/raw/master/zips</datadir>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Install addons made by Thomas Meadows</summary>
+    <description>Contains Infowars.com addon.......For OFFICIAL Support email thomasmeadows@gmail.com</description>
+    <platform>all</platform>
+  </extension>
 </addon>
-

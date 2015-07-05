@@ -594,43 +594,33 @@ def Documentary_Sub_Menu(title='', movie_num=''): #The Main Menu
     eod() #Ends the directory listing and prints it to the screen.  if you dont use eod() or something like it, the menu items won't be put to the screen.
 
 def Nightly_News_Sub_Menu(title='',dialog=''): #The Main Menu
+    #https://www.youtube.com/user/ConspiracyScope 
     WhereAmI('@ Nightly News')
-    url = 'http://gdata.youtube.com/feeds/api/users/ConspiracyScope/uploads?start-index=1&max-results=30'
+    url = 'https://www.youtube.com/feeds/videos.xml?channel_id=UCl0T0SKaV5rJU81F_QUCakw'
     response = urllib2.urlopen(url)
     if response and response.getcode() == 200:
         content = response.read()
         videos= find_multiple_matches(content,"<entry>(.*?)</entry>")
         sources = []
-        for entry in videos:
+        for entry in videos: 
             title = find_single_match(entry,"<titl[^>]+>([^<]+)</title>")
             plot = find_single_match(entry,"<media\:descriptio[^>]+>([^<]+)</media\:description>")
             thumbnail = find_single_match(entry,"<media\:thumbnail url='([^']+)'")
-            video_id = find_single_match(entry,"http\://www.youtube.com/watch\?v\=([^\&]+)\&").replace("&amp;","&")
-            url = "http://youtu.be/"+video_id
-            url2 = "plugin://plugin.video.youtube/?path=/root/video&action=play_video&videoid="+video_id
+            video_id = find_single_match(entry,"<yt\:videoId>([^<]+)</yt\:videoId>")
+            url = "plugin://plugin.video.youtube/?path=/root/video&action=play_video&videoid="+video_id
             if title.find('Nightly News') > -1:
-                try:
-                    #print title, plot, thumbnail, url
-                    if not dialog:
-                        add_item( action="play" , title=title , plot=plot , url=url2 ,thumbnail=thumbnail , folder=False)
-                    hosted_media = urlresolver.HostedMediaFile(url=url, title=title)
-                    sources.append(hosted_media)
-                except:
-                    _addon.log('Error while trying to resolve %s' % url)
-        if dialog:
-            #print sources
-            source = urlresolver.choose_source(sources)
-            if source:
-                stream_url = source.resolve()
-                addon.resolve_url(stream_url)      
+                add_item( action="play" , title=title , plot=plot , url=url ,thumbnail=thumbnail , folder=False )
+            #else:
+                #_addon.log('Error while trying to resolve %s' % url)  
     else:
         util.showError(ADDON_ID, 'Could not open URL %s to create menu' % (url))
-
     eod()
+
 	
 def Historic_Shows_Sub_Menu(title=''): #The Main Menu
+    #https://www.youtube.com/user/ConspiracyScope 
     WhereAmI('@ Historic Shows Video')
-    url = 'http://gdata.youtube.com/feeds/api/users/ConspiracyScope/uploads?start-index=1&max-results=30'
+    url = 'https://www.youtube.com/feeds/videos.xml?channel_id=UCl0T0SKaV5rJU81F_QUCakw'
     response = urllib2.urlopen(url)
     if response and response.getcode() == 200:
         content = response.read()
@@ -639,7 +629,7 @@ def Historic_Shows_Sub_Menu(title=''): #The Main Menu
             title = find_single_match(entry,"<titl[^>]+>([^<]+)</title>")
             plot = find_single_match(entry,"<media\:descriptio[^>]+>([^<]+)</media\:description>")
             thumbnail = find_single_match(entry,"<media\:thumbnail url='([^']+)'")
-            video_id = find_single_match(entry,"http\://www.youtube.com/watch\?v\=([^\&]+)\&").replace("&amp;","&")
+            video_id = find_single_match(entry,"<yt\:videoId>([^<]+)</yt\:videoId>")
             url = "plugin://plugin.video.youtube/?path=/root/video&action=play_video&videoid="+video_id
             if title.find('Alex Jones Show') > -1:
                 if title.find('Podcast') == -1:
@@ -650,8 +640,9 @@ def Historic_Shows_Sub_Menu(title=''): #The Main Menu
     eod()	
 	
 def Clips_Sub_Menu(title=''): #The Main Menu
+    #https://www.youtube.com/user/TheAlexJonesChannel
     WhereAmI('@ Clips')
-    url = 'http://gdata.youtube.com/feeds/api/users/TheAlexJonesChannel/uploads?start-index=1&max-results=30'
+    url = 'https://www.youtube.com/feeds/videos.xml?channel_id=UCvsye7V9psc-APX6wV1twLg'
     response = urllib2.urlopen(url)
     if response and response.getcode() == 200:
         content = response.read()
@@ -660,7 +651,7 @@ def Clips_Sub_Menu(title=''): #The Main Menu
             title = find_single_match(entry,"<titl[^>]+>([^<]+)</title>")
             plot = find_single_match(entry,"<media\:descriptio[^>]+>([^<]+)</media\:description>")
             thumbnail = find_single_match(entry,"<media\:thumbnail url='([^']+)'")
-            video_id = find_single_match(entry,"http\://www.youtube.com/watch\?v\=([^\&]+)\&").replace("&amp;","&")
+            video_id = find_single_match(entry,"<yt\:videoId>([^<]+)</yt\:videoId>")
             url = "plugin://plugin.video.youtube/?path=/root/video&action=play_video&videoid="+video_id
             add_item( action="play" , title=title , plot=plot , url=url ,thumbnail=thumbnail , folder=False )
     else:
@@ -669,24 +660,9 @@ def Clips_Sub_Menu(title=''): #The Main Menu
     eod()
 
 def Historic_Shows_Audio_Sub_Menu(title=''): #The Main Menu
-    # WhereAmI('@ Historic Audio Shows')
-    # url = 'http://xml.nfowars.net/Alex.rss'
-    # response = urllib2.urlopen(url)
-    # if response and response.getcode() == 200:
-        # content = response.read()
-        # videos= find_multiple_matches(content,"<item>(.*?)</item>")
-        # for entry in videos:
-            # title = find_single_match(entry,"<titl[^>]+>([^<]+)</title>")
-            # plot = find_single_match(entry,"<descriptio[^>]+>([^<]+)</description>")
-            # url = find_single_match(entry,"<gui[^>]+>([^<]+)</guid>")
-            # rurl = addon.resolve_url(url) 
-            # add_item( action="PlayURL" , title=title , plot=plot , url=url ,thumbnail=_artIcon , folder=False )
-    # else:
-        # util.showError(ADDON_ID, 'Could not open URL %s to create menu' % (url))
-
-    # eod()	
+    #https://www.youtube.com/user/ConspiracyScope 
     WhereAmI('@ Nightly News')
-    url = 'http://gdata.youtube.com/feeds/api/users/ConspiracyScope/uploads?start-index=1&max-results=30'
+    url = 'https://www.youtube.com/feeds/videos.xml?channel_id=UCl0T0SKaV5rJU81F_QUCakw'
     response = urllib2.urlopen(url)
     if response and response.getcode() == 200:
         content = response.read()
@@ -695,7 +671,7 @@ def Historic_Shows_Audio_Sub_Menu(title=''): #The Main Menu
             title = find_single_match(entry,"<titl[^>]+>([^<]+)</title>")
             plot = find_single_match(entry,"<media\:descriptio[^>]+>([^<]+)</media\:description>")
             thumbnail = find_single_match(entry,"<media\:thumbnail url='([^']+)'")
-            video_id = find_single_match(entry,"http\://www.youtube.com/watch\?v\=([^\&]+)\&").replace("&amp;","&")
+            video_id = find_single_match(entry,"<yt\:videoId>([^<]+)</yt\:videoId>")
             url = "plugin://plugin.video.youtube/?path=/root/video&action=play_video&videoid="+video_id
             if title.find('Alex Jones Show') > -1:
                 if title.find('Podcast') > -1:
