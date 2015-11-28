@@ -16,8 +16,10 @@
     <disclaimer lang="en">This Project was made without association of the creators of infowars.com</disclaimer>
   	<language>en</language>
   	<platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
     <forum>http://www.kodi.tv</forum>
     <website>https://github.com/thomasmeadows/repository.thomasmeadows</website>
-  	<email></email>
+    <email></email>
+    <source>https://github.com/thomasmeadows/repository.thomasmeadows</source>
   </extension>
 </addon>
